@@ -23,7 +23,7 @@ fn main() {
         control_flow.set_wait();
 
         match event {
-            #[cfg(target_os = "windows")]
+            #[cfg(windows_platform)]
             Event::WindowEvent {
                 event:
                     WindowEvent::KeyboardInput {
