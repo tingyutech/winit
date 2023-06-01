@@ -1,13 +1,10 @@
 #![allow(clippy::single_match)]
 
-use std::path::Path;
-
 use simple_logger::SimpleLogger;
 use winit::{
     event::{ElementState, Event, KeyEvent, WindowEvent},
     event_loop::EventLoop,
-    keyboard::KeyCode,
-    window::{CursorIcon, Icon, WindowBuilder},
+    window::{CursorIcon, WindowBuilder},
 };
 
 fn main() {
@@ -30,7 +27,7 @@ fn main() {
                         event:
                             KeyEvent {
                                 state: ElementState::Pressed,
-                                physical_key: KeyCode::KeyC,
+                                physical_key: winit::keyboard::KeyCode::KeyC,
                                 ..
                             },
                         ..
@@ -110,6 +107,12 @@ const CURSORS: &[CursorIcon] = &[
     CursorIcon::RowResize,
 ];
 
+#[cfg(windows_platform)]
+use std::path::Path;
+#[cfg(windows_platform)]
+use winit::window::Icon;
+
+#[cfg(windows_platform)]
 fn load_icon(path: &Path) -> Icon {
     let (icon_rgba, icon_width, icon_height) = {
         let image = image::open(path)
