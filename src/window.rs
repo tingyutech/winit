@@ -1189,6 +1189,16 @@ impl Window {
         self.window.set_cursor_icon(cursor);
     }
 
+    /// Modifies the cursor icon of the window.
+    ///
+    /// ## Platform-specific
+    ///
+    ///  - Only **Windows** supported for now.
+    #[inline]
+    pub fn set_cursor_custom_icon(&self, cursor: Icon) {
+        self.window.set_cursor_custom_icon(cursor);
+    }
+
     /// Changes the position of the cursor in window coordinates.
     ///
     /// ```no_run
