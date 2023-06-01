@@ -37,7 +37,7 @@ fn main() {
                 println!("Setting cursor to custom");
                 let path: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/examples/icon.png");
                 let icon = load_icon(Path::new(path));
-                window.set_cursor_custom_icon(icon.clone());
+                window.set_cursor_custom_icon(icon);
             }
             Event::WindowEvent {
                 event:
