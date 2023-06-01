@@ -23,6 +23,7 @@ fn main() {
         control_flow.set_wait();
 
         match event {
+            #[cfg(target_os = "windows")]
             Event::WindowEvent {
                 event:
                     WindowEvent::KeyboardInput {
@@ -118,5 +119,6 @@ fn load_icon(path: &Path) -> Icon {
         let rgba = image.into_raw();
         (rgba, width, height)
     };
-    Icon::from_rgba(icon_rgba, icon_width, icon_height).expect("Failed to open icon")
+    // Assumes that hotspot is at the left top corner.
+    Icon::from_rgba_cursor(icon_rgba, icon_width, icon_height, 0, 0).expect("Failed to open icon")
 }
